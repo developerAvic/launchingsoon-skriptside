@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon | SkriptSide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      background: radial-gradient(circle at top left, #120028, #090011);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated gradient background overlay */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: linear-gradient(60deg, #7b2ff7, #f107a3, #5000ca, #9a1aff);
+      background-size: 400% 400%;
+      z-index: 0;
+      animation: gradientShift 15s ease infinite;
+      opacity: 0.15;
+      filter: blur(100px);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      background: linear-gradient(90deg, #9a1aff, #7b2ff7, #f107a3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShimmer 4s infinite linear;
+      display: inline-block;
+    }
+
+    @keyframes textShimmer {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: #cfc6ff;
+      letter-spacing: 1px;
+      animation: fadeIn 2.5s ease 0.3s forwards;
+    }
+
+    .glow-orbs {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .orb {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #a45fff 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: floatUp 10s infinite ease-in-out;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #6f5fae;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-orbs" id="orbs"></div>
+  <div class="container">
+    <h1>Coming Soon</h1>
+    <p>We're building something extraordinary at <strong>SkriptSide</strong>.</p>
+    <p><strong>skriptside.com</strong></p>
+  </div>
+  <footer>© 2025 SkriptSide | All rights reserved</footer>
+
+  <script>
+    // Generate random glowing orbs
+    const orbContainer = document.getElementById('orbs');
+    const orbCount = 25;
+    for (let i = 0; i < orbCount; i++) {
+      const orb = document.createElement('div');
+      orb.classList.add('orb');
+      orb.style.left = Math.random() * 100 + 'vw';
+      orb.style.animationDuration = 8 + Math.random() * 6 + 's';
+      orb.style.animationDelay = Math.random() * 5 + 's';
+      orb.style.width = orb.style.height = 10 + Math.random() * 30 + 'px';
+      orbContainer.appendChild(orb);
+    }
+  </script>
+</body>
+</html>
